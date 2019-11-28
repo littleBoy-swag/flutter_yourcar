@@ -12,15 +12,21 @@ class Loading {
           barrierDismissible: false,
           barrierLabel:
               MaterialLocalizations.of(context).modalBarrierDismissLabel,
+          transitionDuration: Duration(milliseconds: 150),
           pageBuilder: (BuildContext context, Animation animation,
               Animation secondAnimation) {
             return Align(
               child: ClipRect(
                 child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
                   width: 100,
                   height: 100,
-                  color: Colors.black54,
-                  child: CupertinoActivityIndicator(),
+                  child: CupertinoActivityIndicator(
+                    radius: 20,
+                  ),
                 ),
               ),
             );
