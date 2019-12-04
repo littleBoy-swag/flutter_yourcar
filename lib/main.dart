@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_yourcar/pages/account_secure_page.dart';
+import 'package:flutter_yourcar/pages/eidt_mobile_number_page.dart';
+import 'package:flutter_yourcar/pages/notification_setting_page.dart';
+import 'package:flutter_yourcar/pages/privacy_page.dart';
+import 'package:flutter_yourcar/pages/setting_page.dart';
+import 'package:flutter_yourcar/pages/suggestion_feedback_page.dart';
 import 'package:flutter_yourcar/widgets/loading.dart';
 
 void main() => runApp(MyApp());
@@ -21,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: NotificationSettingPage(),
     );
   }
 }

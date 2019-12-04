@@ -10,8 +10,8 @@ class CommonButton extends StatelessWidget {
   CommonButton(
       {@required this.callback,
       @required this.content,
-      this.width = 250,
-      this.height = 50,
+      this.width = double.infinity,
+      this.height = 44,
       this.fontSize = 18});
 
   @override
@@ -20,7 +20,7 @@ class CommonButton extends StatelessWidget {
       width: width,
       height: height,
       child: RaisedButton(
-        color: Colors.red,
+        color: Color.fromARGB(255, 255, 102, 0),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(height / 2))),
         child: Text(
