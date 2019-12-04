@@ -189,22 +189,45 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
   void _showEditNameDialog() {}
 
   void _showEditGenderDialog(BuildContext context) {
-    var genders = ["男", "女"];
-    final picker = CupertinoPicker(
-        backgroundColor: Colors.white,
-        itemExtent: 30,
-        onSelectedItemChanged: (position) {},
-        children: genders.map((e) {
-          return Text(e);
-        }).toList());
-    showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Container(
-            height: 150,
-            child: picker,
-          );
-        });
+    showCupertinoModalPopup(
+      context: context,
+      builder: (context) {
+        return CupertinoActionSheet(
+          actions: <Widget>[
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                '男',
+                style: commonTextStyle,
+              ),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                '女',
+                style: commonTextStyle,
+              ),
+            ),
+          ],
+          cancelButton: CupertinoActionSheetAction(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              '取消',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 255, 102, 0),
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   void _showEditBirthdayDialog() {}
@@ -218,6 +241,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
+          title: Text("确认"),
           content: Text('是否确认提交个人信息'),
           actions: <Widget>[
             //操作控件
