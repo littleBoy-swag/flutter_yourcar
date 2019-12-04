@@ -14,6 +14,8 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
   String _homeTown = "江苏南京";
   String _motto = "所有随风而逝的都属于昨天的，所有历经风雨留下来的才是面向未来的";
 
+  TextEditingController _nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,6 +134,9 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                         _birthday,
                         style: commonTextStyle,
                       ),
+                      onTap: () {
+                        _showEditBirthdayDialog();
+                      },
                     ),
                     Divider(
                       height: 1,
@@ -145,6 +150,9 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                         _homeTown,
                         style: commonTextStyle,
                       ),
+                      onTap: () {
+                        _showEditHomeTownDialog();
+                      },
                     ),
                   ],
                 ),
@@ -183,10 +191,54 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
           ],
         ),
       ),
+      resizeToAvoidBottomPadding: false,
     );
   }
 
-  void _showEditNameDialog() {}
+  void _showEditNameDialog() {
+    showCupertinoDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: Text('昵称'),
+            content: Card(
+              elevation: 0.0,
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    controller: _nameController,
+                    decoration: InputDecoration(
+                        hintText: '请输入昵称',
+                        filled: true,
+                        border: InputBorder.none,
+                        fillColor: Colors.grey.shade50),
+                  ),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('取消'),
+              ),
+              CupertinoDialogAction(
+                onPressed: () {
+                  setState(() {
+                    _name = _nameController.text;
+                  });
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  '确定',
+                  style: TextStyle(color: Color.fromARGB(255, 255, 102, 0)),
+                ),
+              ),
+            ],
+          );
+        });
+  }
 
   void _showEditGenderDialog(BuildContext context) {
     showCupertinoModalPopup(
@@ -196,6 +248,9 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
           actions: <Widget>[
             CupertinoActionSheetAction(
               onPressed: () {
+                setState(() {
+                  _gender = "男";
+                });
                 Navigator.pop(context);
               },
               child: Text(
@@ -205,6 +260,9 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
             ),
             CupertinoActionSheetAction(
               onPressed: () {
+                setState(() {
+                  _gender = "女";
+                });
                 Navigator.pop(context);
               },
               child: Text(
@@ -256,7 +314,8 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              textStyle: TextStyle(fontSize: 18, color: Colors.blueAccent),
+              textStyle: TextStyle(
+                  fontSize: 18, color: Color.fromARGB(255, 255, 102, 0)),
               child: Text('确定'),
             ),
           ],
