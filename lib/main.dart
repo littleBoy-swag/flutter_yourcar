@@ -3,6 +3,7 @@ import 'package:flutter_yourcar/pages/about_us_page.dart';
 import 'package:flutter_yourcar/pages/account_secure_page.dart';
 import 'package:flutter_yourcar/pages/edit_user_profile_page.dart';
 import 'package:flutter_yourcar/pages/eidt_mobile_number_page.dart';
+import 'package:flutter_yourcar/pages/main_page.dart';
 import 'package:flutter_yourcar/pages/notification_setting_page.dart';
 import 'package:flutter_yourcar/pages/privacy_page.dart';
 import 'package:flutter_yourcar/pages/setting_page.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: EditUserProfilePage(),
+      home: MainPage(),
     );
   }
 }

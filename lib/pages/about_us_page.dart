@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_yourcar/widgets/common_text_style.dart';
 import 'package:flutter_yourcar/widgets/v_empty_view.dart';
@@ -96,9 +97,39 @@ class _AboutUsPageState extends State<AboutUsPage> {
                     ),
                     trailing: Text(
                       "400-858-7585",
-                      style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 255, 102, 0)),
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 255, 102, 0)),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      showCupertinoDialog(
+                          context: context,
+                          builder: (context) {
+                            return CupertinoAlertDialog(
+                              title: Text("提示"),
+                              content: Text("确定拨打400-858-7585？"),
+                              actions: <Widget>[
+                                CupertinoDialogAction(
+                                  child: Text(
+                                    "取消",
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 102, 0)),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                                CupertinoDialogAction(
+                                  child: Text("确定"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          });
+                    },
                   ),
                 ],
               ),
