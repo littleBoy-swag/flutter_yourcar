@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_yourcar/pages/about_us_page.dart';
 import 'package:flutter_yourcar/pages/account_secure_page.dart';
 import 'package:flutter_yourcar/pages/close_account_page.dart';
+import 'package:flutter_yourcar/pages/home_tab_page.dart';
 import 'package:flutter_yourcar/pages/privacy_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -25,7 +26,7 @@ class _MainPageState extends State<MainPage> {
             body: PageView(
               physics: NeverScrollableScrollPhysics(),
               children: <Widget>[
-                CloseAccountPage(),
+                HomeTabPage(),
                 AccountSecurePage(),
                 PrivacyPage(),
               ],
@@ -43,7 +44,7 @@ class _MainPageState extends State<MainPage> {
                 BottomNavigationBarItem(
                     icon: Icon(Icons.assessment), title: Text("")),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.person), title: Text("我的")),
+                    icon: Icon(Icons.message), title: Text("消息")),
               ],
               onTap: _onTap,
               currentIndex: _index,
